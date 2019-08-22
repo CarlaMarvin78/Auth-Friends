@@ -11,15 +11,15 @@ function App() {
       <header className="App-header">
         <ul>
             <li>
-              <Link to="/login">Login</Link>
+              <Link className="App-link" to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/protected">Protected Page</Link>
+              <Link className="App-link" to="/protected">Protected Page</Link>
             </li>
         </ul>
-        <Route path="/login" component={FormikLoginForm} />
-        <PrivateRoute exact path="/" component={FriendsList}/>
       </header>
+      <Route path="/login" component={FormikLoginForm} />
+      <PrivateRoute exact path="/" component={FriendsList}/>
     </div>
   );
 }
