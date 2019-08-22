@@ -16,7 +16,7 @@ function LoginForm({errors, touched}) {
           <Field type="password" name="password" placeholder="Password" />
         </div>
   
-        <button>Submit!</button>
+        <button type="submit">Login</button>
       </Form>
     );
   }

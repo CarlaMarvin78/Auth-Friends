@@ -3,6 +3,8 @@ import '../App.css';
 import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import LoginForm from './LoginForm';
+import axios from 'axios';
+
 
 const FormikLoginForm = withFormik({
 
@@ -23,9 +25,17 @@ validationSchema: Yup.object().shape({
 }),
 //======END VALIDATION SCHEMA==========
 
-  handleSubmit(values) {
+  handleSubmit(values, { props }) {
   console.log(values);
   //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+  axios
+  .post('http://localhost:5000/api/login', values)
+  .then(res => {
+    console.log(res.data.payload);
+    localStorage.setItem('token', res.data.payload);
+    props.history.push('/');
+  })
+  .catch(err => console.log(err.response));
   }
 })(LoginForm);
 
